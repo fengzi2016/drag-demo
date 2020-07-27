@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import { Form, Input, Button, InputNumber } from "@bytedesign/web-react";
 import { useDrag, DragSourceMonitor } from "react-dnd";
+import React, { useEffect } from "react";
 import { ItemTypes } from "./ItemTypes";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { Box } from "./Box";
@@ -20,16 +21,13 @@ function getStyles(
     height: isDragging ? 0 : "",
   };
 }
-
 export interface DraggableBoxProps {
   id: string;
   title: string;
   left: number;
   top: number;
-  type: string;
 }
-
-export const DraggableBox: React.FC<DraggableBoxProps> = (props) => {
+export const DraggableBtns: React.FC<DraggableBoxProps> = (props) => {
   const { id, title, left, top } = props;
   const [{ isDragging }, drag, preview] = useDrag({
     item: { type: ItemTypes.BOX, id, left, top, title },
@@ -37,11 +35,6 @@ export const DraggableBox: React.FC<DraggableBoxProps> = (props) => {
       isDragging: monitor.isDragging(),
     }),
   });
-
-  //TODO: 根据type生成展示组件
-  // function getComponent(type) {
-
-  // }
 
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });
@@ -53,3 +46,13 @@ export const DraggableBox: React.FC<DraggableBoxProps> = (props) => {
     </div>
   );
 };
+
+{
+  /* <Button style={{ marginRight: 20, marginBottom: 20 }}>默认按钮</Button>
+<Button type='primary' style={{ marginRight: 20, marginBottom: 20 }}>
+  主要按钮
+</Button>
+<Button type='warning' style={{ marginRight: 20, marginBottom: 20 }}>
+  危险按钮
+</Button> */
+}

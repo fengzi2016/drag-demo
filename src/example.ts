@@ -1,1 +1,2 @@
-export { Example as default } from './Example'
+import { Example } from "./Examples";
+export default Example;
